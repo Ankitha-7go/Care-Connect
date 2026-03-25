@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block body %}
+<style>
+  .login-jumbotron {
+    background-color: #1F2E3D;
+    border: 1px solid #FF6B6B;
+    border-radius: 18px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    color: #F7F9FB;
+  }
+
+  .login-jumbotron h4 {
+    background-color: #FF6B6B;
+    color: #FFF8E1;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    padding: 8px;
+  }
+
+  .login-jumbotron .form-control {
+    background-color: #2A3A3B;
+    border: 1px solid #7A8BA8;
+    color: #FFFFFF;
+  }
+
+  .login-jumbotron .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .login-jumbotron .form-control:focus {
+    border-color: #FF6B6B;
+    box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
+    background-color: #293740;
+    color: #FFFFFF;
+  }
+
+  .login-jumbotron label,
+  .login-jumbotron .form-check-label,
+  .login-jumbotron h4,
+  .login-jumbotron a {
+    color: #FFFFFF !important;
+  }
+
+  .login-jumbotron .btn-primary {
+    color: #FFFFFF;
+  }
+
+  .login-jumbotron .btn-primary {
+    background-color: #FF6B6B;
+    border-color: #FF6B6B;
+    color: #FFF8E1;
+  }
+
+  .login-jumbotron .btn-primary:hover {
+    background-color: #E63946;
+    border-color: #E63946;
+  }
+
+  .login-jumbotron a {
+    color: #FFB347;
+  }
+</style>
+
+<div class="container mt-3">
+
+<div class="row">
+
+
+<div class="col-md-4">
+
+</div>
+
+<div class="col-md-4 jumbotron login-jumbotron">
+
+<h4 class="text-center">Login</h4>
+<br>
+
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+
+<form action="/login" method="post">
+
+ 
+
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  
+  </div>
+
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" required>
+  </div>
+  
+  <button type="submit" class="btn btn-dark btn-sm btn-block">Login</button>
+</form>
+
+<br>
+Not a User <a href="/signup">Signup</a>
+
+
+</div>
+
+<div class="col-md-4">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+{% endblock body %}
